@@ -66,3 +66,5 @@ dmypy.json
 
 # Logs
 *.log
+
+.claude/**
