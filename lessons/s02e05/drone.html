@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DRN-BMB7 - instrukcja API</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --line: #334155;
+      --accent: #22d3ee;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.55;
+      background: linear-gradient(180deg, #020617 0%, #0f172a 100%);
+      color: var(--text);
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 16px 40px;
+    }
+    .card {
+      background: rgba(17, 24, 39, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+    h1, h2, h3 { margin: 0 0 10px; }
+    h1 { font-size: 30px; color: #67e8f9; }
+    h2 {
+      font-size: 21px;
+      margin-top: 2px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 6px;
+    }
+    h3 { font-size: 18px; margin-top: 16px; }
+    p { margin: 0 0 10px; color: var(--text); }
+    .muted { color: var(--muted); }
+    ul { margin: 6px 0 8px 22px; }
+    li { margin: 2px 0; }
+    code {
+      font-family: "Courier New", monospace;
+      background: rgba(148, 163, 184, 0.2);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      border-radius: 5px;
+      padding: 1px 6px;
+      color: #e2e8f0;
+    }
+    pre {
+      margin: 0;
+      overflow-x: auto;
+      padding: 12px;
+      border-radius: 8px;
+      background: #0b1220;
+      border: 1px solid var(--line);
+      color: #d1fae5;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      border: 1px solid var(--line);
+    }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+    }
+    th { background: #0b1220; }
+    .pill {
+      display: inline-block;
+      background: rgba(34, 211, 238, 0.12);
+      color: #67e8f9;
+      border: 1px solid rgba(34, 211, 238, 0.45);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 13px;
+      margin-right: 8px;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>DRN-BMB7 - instrukcja obsługi API</h1>
+      <p>Dokumentacja dotyczy fikcyjnego drona bojowego <strong>DRN-BMB7</strong> używanego w grze.</p>
+      <p class="muted">Oprogramowanie: <strong>Softo Inc.</strong>, rok 2026.</p>
+      <p>API pozwala sterować wieloma elementami drona. Nazwy metod mogą się powtarzać (na przykład kilka wariantów <code>set(...)</code>). System rozpoznaje właściwe polecenie na podstawie przekazanych parametrów.</p>
+      <p><strong>Informacja operacyjna:</strong> model DRN-BMB7 zawsze niesie jeden ładunek wybuchowy małego zasięgu.</p>
+    </section>
+
+    <section class="card">
+      <h2>Endpoint i wymagania requestu</h2>
+      <p><span class="pill">POST</span><code>/verify</code></p>
+      <ul>
+        <li><code>apikey</code> - UUID identyfikujące operatora drona (pole obowiązkowe)</li>
+        <li><code>task</code> - nazwa zadania, zawsze ustawiona na <code>drone</code> (pole obowiązkowe)</li>
+        <li><code>answer</code> - obiekt z danymi odpowiedzi przekazywanymi do zadania (pole obowiązkowe)</li>
+        <li><code>answer.instructions</code> - tablica JSON z instrukcjami (co najmniej 1 element)</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Metody sterowania</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Obszar</th>
+            <th>Metoda</th>
+            <th>Opis i parametry</th>
+            <th>Przykład</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sterowanie lokalizacją</td>
+            <td><code>setDestinationObject(ID)</code></td>
+            <td>
+              Ustawia obiekt docelowy lotu.<br>
+              Format <code>ID</code>: <code>[A-Z]{3}[0-9]+[A-Z]{2}</code><br>
+              Struktura: prefix typu obiektu + kod liczbowy + kod kraju.
+            </td>
+            <td><code>setDestinationObject(BLD1234PL)</code></td>
+          </tr>
+          <tr>
+            <td>Sterowanie lokalizacją</td>
+            <td><code>set(x,y)</code></td>
+            <td>
+              Ustawia sektor lądowania na mapie obiektu.<br>
+              <code>x</code> to kolumna, <code>y</code> to wiersz.<br>
+              Lewy górny róg mapy ma współrzędne <code>1,1</code>.
+            </td>
+            <td><code>set(3,4)</code></td>
+          </tr>
+          <tr>
+            <td>Sterowanie silnikami</td>
+            <td><code>set(mode)</code></td>
+            <td>Włącza lub wyłącza silniki. Dozwolone wartości: <code>engineON</code>, <code>engineOFF</code>.</td>
+            <td><code>set(engineON)</code></td>
+          </tr>
+          <tr>
+            <td>Sterowanie silnikami</td>
+            <td><code>set(power)</code></td>
+            <td>Ustawia moc silników od <code>0%</code> do <code>100%</code>.</td>
+            <td><code>set(1%)</code></td>
+          </tr>
+          <tr>
+            <td>Sterowanie dronem</td>
+            <td><code>set(xm)</code></td>
+            <td>Ustawia wysokość lotu od <code>1m</code> do <code>100m</code>.</td>
+            <td><code>set(4m)</code></td>
+          </tr>
+          <tr>
+            <td>Sterowanie dronem</td>
+            <td><code>flyToLocation</code></td>
+            <td>
+              Rozpoczyna lot i nie przyjmuje parametrów.<br>
+              Wymaga wcześniejszego ustawienia wysokości, obiektu docelowego i sektora lądowania.
+            </td>
+            <td><code>flyToLocation</code></td>
+          </tr>
+          <tr>
+            <td>Diagnostyka</td>
+            <td><code>selfCheck</code></td>
+            <td>Wykonuje szybki test systemów pokładowych i zwraca, czy wszystkie moduły są gotowe.</td>
+            <td><code>selfCheck</code></td>
+          </tr>
+          <tr>
+            <td>Konfiguracja</td>
+            <td><code>setName(x)</code></td>
+            <td>Ustawia przyjazną nazwę drona. Wartość <code>x</code> musi być alfanumeryczna i może zawierać spacje.</td>
+            <td><code>setName(Fox 21)</code></td>
+          </tr>
+          <tr>
+            <td>Konfiguracja</td>
+            <td><code>setOwner(Imie Nazwisko)</code></td>
+            <td>
+              Ustawia właściciela drona.<br>
+              Trzeba podać dokładnie dwa słowa oddzielone spacją: imię i nazwisko.
+            </td>
+            <td><code>setOwner(Adam Kowalski)</code></td>
+          </tr>
+          <tr>
+            <td>Konfiguracja</td>
+            <td><code>setLed(color)</code></td>
+            <td>Ustawia kolor LED. Parametr <code>color</code> to kod HEX w formacie <code>#000000</code>.</td>
+            <td><code>setLed(#00FFAA)</code></td>
+          </tr>
+          <tr>
+            <td>Informacyjne</td>
+            <td><code>getFirmwareVersion</code></td>
+            <td>Zwraca wersję oprogramowania zainstalowaną w dronie. Metoda bez parametrów.</td>
+            <td><code>getFirmwareVersion</code></td>
+          </tr>
+          <tr>
+            <td>Informacyjne</td>
+            <td><code>getConfig</code></td>
+            <td>
+              Zwraca aktualną konfigurację drona. Metoda bez parametrów.<br>
+              Odpowiedź zawiera także pole <code>owner</code> (domyślnie: <code>not assigned</code>).
+            </td>
+            <td><code>getConfig</code></td>
+          </tr>
+          <tr>
+            <td>Kalibracja</td>
+            <td><code>calibrateCompass</code></td>
+            <td>Kalibruje system orientacji przestrzennej oparty o kompas. Metoda bez parametrów.</td>
+            <td><code>calibrateCompass</code></td>
+          </tr>
+          <tr>
+            <td>Kalibracja</td>
+            <td><code>calibrateGPS</code></td>
+            <td>Kalibruje nadajnik i odbiornik GPS. Metoda bez parametrów.</td>
+            <td><code>calibrateGPS</code></td>
+          </tr>
+          <tr>
+            <td>Serwis</td>
+            <td><code>hardReset</code></td>
+            <td>Przywraca konfigurację drona do stanu fabrycznego. Metoda bez parametrów.</td>
+            <td><code>hardReset</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Ustawienia celu misji</h2>
+      <p>Można ustawić wiele celów, jeden po drugim:</p>
+      <ul>
+        <li><code>set(video)</code> - nagranie filmu</li>
+        <li><code>set(image)</code> - wykonanie zdjęcia</li>
+        <li><code>set(destroy)</code> - zniszczenie obiektu</li>
+        <li><code>set(return)</code> - powrót do bazy z raportem po misji</li>
+      </ul>
+      <p>Kolejność celów nie jest istotna. System AI zaszyty w dronie wykona wszystkie cele w odpowiedniej kolejności.</p>
+    </section>
+
+    <section class="card">
+      <h2>Przykłady użycia funkcji</h2>
+      <h3>1) Szybki test systemów, konfiguracja i odczyt wersji</h3>
+      <pre>{
+  "apikey": "tutaj-twoj-klucz",
+  "task": "drone",
+  "answer": {
+    "instructions": [
+      "selfCheck",
+      "getConfig",
+      "getFirmwareVersion"
+    ]
+  }
+}</pre>
+
+      <h3>2) Personalizacja drona (nazwa + właściciel + LED)</h3>
+      <pre>{
+  "apikey": "tutaj-twoj-klucz",
+  "task": "drone",
+  "answer": {
+    "instructions": [
+      "setName(Fox 21)",
+      "setOwner(Adam Kowalski)",
+      "setLed(#FF8800)"
+    ]
+  }
+}</pre>
+
+      <h3>3) Kalibracja systemów nawigacji</h3>
+      <pre>{
+  "apikey": "tutaj-twoj-klucz",
+  "task": "drone",
+  "answer": {
+    "instructions": [
+      "calibrateCompass",
+      "calibrateGPS",
+      "selfCheck"
+    ]
+  }
+}</pre>
+
+      <h3>4) Przywrócenie ustawień fabrycznych</h3>
+      <pre>{
+  "apikey": "tutaj-twoj-klucz",
+  "task": "drone",
+  "answer": {
+    "instructions": [
+      "hardReset",
+      "getConfig"
+    ]
+  }
+}</pre>
+
+    </section>
+
+    <section class="card">
+      <h2>Odpowiedź API</h2>
+      <p>W odpowiedzi API zwraca dane zgodne z celem misji, na przykład:</p>
+      <ul>
+        <li>materiał wideo,</li>
+        <li>zdjęcia,</li>
+        <li>status wykonania misji,</li>
+        <li>raport powrotu do bazy.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
