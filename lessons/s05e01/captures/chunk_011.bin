@@ -1,0 +1,128 @@
+[
+    {
+      "name": "Brudzewo",
+      "latitude": 54.685556,
+      "longitude": 18.354444,
+      "occupiedArea": 0.5538,
+      "riverAccess": false,
+      "farmAnimals": false,
+      "inhabitants": 214
+    },
+    {
+      "name": "Celbowo",
+      "latitude": 54.685833,
+      "longitude": 18.369444,
+      "occupiedArea": 0.7142,
+      "riverAccess": false,
+      "farmAnimals": false,
+      "inhabitants": 173
+    },
+    {
+      "name": "Darzlubie",
+      "latitude": 54.703306,
+      "longitude": 18.323111,
+      "occupiedArea": 1.2187,
+      "riverAccess": false,
+      "farmAnimals": false,
+      "inhabitants": 289
+    },
+    {
+      "name": "Domatowo",
+      "latitude": 54.716694,
+      "longitude": 18.233306,
+      "occupiedArea": 1.6349,
+      "riverAccess": true,
+      "farmAnimals": false,
+      "inhabitants": 0
+    },
+    {
+      "name": "Drohiczyn",
+      "latitude": 52.398611,
+      "longitude": 22.658889,
+      "occupiedArea": 15.6841,
+      "riverAccess": true,
+      "farmAnimals": true,
+      "inhabitants": 156
+    },
+    {
+      "name": "Karlikowo",
+      "latitude": 54.736694,
+      "longitude": 18.15,
+      "occupiedArea": 0.4635,
+      "riverAccess": false,
+      "farmAnimals": false,
+      "inhabitants": 98
+    },
+    {
+      "name": "Mechowo",
+      "latitude": 54.713333,
+      "longitude": 18.278889,
+      "occupiedArea": 0.6674,
+      "riverAccess": false,
+      "farmAnimals": false,
+      "inhabitants": 247
+    },
+    {
+      "name": "Mielnik",
+      "latitude": 52.331111,
+      "longitude": 23.045833,
+      "occupiedArea": 4.0836,
+      "riverAccess": true,
+      "farmAnimals": false,
+      "inhabitants": 331
+    },
+    {
+      "name": "Narew",
+      "latitude": 52.91278,
+      "longitude": 23.52083,
+      "occupiedArea": 3.2195,
+      "riverAccess": true,
+      "farmAnimals": false,
+      "inhabitants": 264
+    },
+    {
+      "name": "Narewka",
+      "latitude": 52.83611,
+      "longitude": 23.7575,
+      "occupiedArea": 2.5196,
+      "riverAccess": true,
+      "farmAnimals": false,
+      "inhabitants": 119
+    },
+    {
+      "name": "Opalino",
+      "latitude": 54.710833,
+      "longitude": 18.098056,
+      "occupiedArea": 0.2718,
+      "riverAccess": false,
+      "farmAnimals": false,
+      "inhabitants": 57
+    },
+    {
+      "name": "Puck",
+      "latitude": 54.717222,
+      "longitude": 18.4075,
+      "occupiedArea": 16.9473,
+      "riverAccess": true,
+      "farmAnimals": false,
+      "inhabitants": 340
+    },
+    {
+      "name": "Skarszewy",
+      "latitude": 54.069722,
+      "longitude": 18.444167,
+      "occupiedArea": 10.7284,
+      "riverAccess": true,
+      "farmAnimals": true,
+      "inhabitants": 201
+    },
+    {
+      "name": "Żarnowiec",
+      "latitude": 54.787222,
+      "longitude": 18.087778,
+      "occupiedArea": 1.1372,
+      "riverAccess": true,
+      "farmAnimals": false,
+      "inhabitants": 145
+    }
+  ]

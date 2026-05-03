@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cityStatistics generatedAt="2026-04-01" trainingData="true" setting="postapocalyptic-archive">
+  <city id="TRN-001">
+    <name>Nowogród Północny</name>
+    <region>Strefa Północnego Wybrzeża</region>
+    <country>Dawna Polska</country>
+    <status>Miasto zostało całkowicie zniszczone podczas Wielkiej Korekty i istnieje już tylko w archiwalnych zapisach.</status>
+    <fate>Ruiny uznano za nienadające się do ponownego zasiedlenia.</fate>
+  </city>
+
+  <formerPopulation>
+    <estimatedResidentsBeforeDestruction>182400</estimatedResidentsBeforeDestruction>
+    <industrialWorkers>48600</industrialWorkers>
+    <marketDistrictResidents>22100</marketDistrictResidents>
+    <portLaborers>9400</portLaborers>
+    <childrenAndYouth>28700</childrenAndYouth>
+  </formerPopulation>
+
+  <formerInfrastructure>
+    <residentialSectors>9</residentialSectors>
+    <transitTunnels>14</transitTunnels>
+    <waterTreatmentPlants>2</waterTreatmentPlants>
+    <radioTowers>3</radioTowers>
+    <industrialBlocks>6</industrialBlocks>
+  </formerInfrastructure>
+
+  <destruction>
+    <eventName>Wielka Korekta</eventName>
+    <destructionLevel unit="percent">100</destructionLevel>
+    <confirmedEvacuationCorridors>1</confirmedEvacuationCorridors>
+    <knownSurvivingDistricts>0</knownSurvivingDistricts>
+    <archiveNote>Po wydarzeniu nie odnotowano trwałego odtworzenia struktur miejskich.</archiveNote>
+  </destruction>
+
+  <formerTrade>
+    <marketDaysPerMonth>11</marketDaysPerMonth>
+    <mainCurrency>kredyty portowe</mainCurrency>
+    <exportedGoods>
+      <item>oczyszczona woda</item>
+      <item>konserwy białkowe</item>
+      <item>złom elektroniczny</item>
+      <item>filtry przeciwpyłowe</item>
+    </exportedGoods>
+    <importedGoods>
+      <item>leki polowe</item>
+      <item>części zamienne do generatorów</item>
+      <item>amunicja</item>
+      <item>nasiona do upraw zamkniętych</item>
+    </importedGoods>
+    <tradeStatus>Handel ustał wraz z całkowitym zniszczeniem miasta.</tradeStatus>
+  </formerTrade>
+
+  <formerDefense>
+    <watchtowers>12</watchtowers>
+    <militiaUnits>5</militiaUnits>
+    <wallIntegrityBeforeFall unit="percent">64</wallIntegrityBeforeFall>
+    <airRaidSirens>18</airRaidSirens>
+    <lastRecordedThreatLevel>krytyczny</lastRecordedThreatLevel>
+  </formerDefense>
+
+  <hazards>
+    <radiationZonesNearby>4</radiationZonesNearby>
+    <airToxicityIndex>89</airToxicityIndex>
+    <mutantSightingsInRuins>27</mutantSightingsInRuins>
+    <acidRainDaysPerMonthAverage>5</acidRainDaysPerMonthAverage>
+    <accessRecommendation>wstęp do ruin odradzany</accessRecommendation>
+  </hazards>
+</cityStatistics>
