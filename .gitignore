@@ -68,3 +68,6 @@ dmypy.json
 *.log
 
 .claude/**
+
+# Lesson run-time caches (downloaded assets, intermediate crops, etc.)
+lessons/**/cache/
